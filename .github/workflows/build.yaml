@@ -12,7 +12,8 @@ name: Publish Docker image
 on:
   #release:
   #  types: [published]
-  [push]
+  push:
+    branches: [ main ]
 
 jobs:
   # see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
@@ -21,14 +22,16 @@ jobs:
     
     steps:
       # Downloa a copy of the repository on the runner
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       # Configures Java 17 JDK by Adoptium
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v1
         with:
-          java-version: '17'
-          distribuion: 'adopt'
-          cache: 'maven'
+          java-version: 17
+          #distribuion: 'adopt'
+          #cache: 'maven'
+      - name: Check Java version
+        run: java -version
       # Runs the Maven package target in non-interactive mode to ensure that your code builds, tests pass, and a package can be created.
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots package

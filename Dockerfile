@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk-alpine
 
-LABEL key = "sparkium.pt"
+LABEL maintainer = "sparkium.pt"
 
 RUN addgroup -S spring && adduser -S spring -G spring
 

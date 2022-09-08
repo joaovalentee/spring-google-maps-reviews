@@ -6,7 +6,7 @@ RUN addgroup -S spring && adduser -S spring -G spring
 
 USER spring:spring
 
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=target/maps-0.0.1.jar
 
 COPY ${JAR_FILE} app.jar
 

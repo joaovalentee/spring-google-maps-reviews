@@ -34,6 +34,9 @@ jobs:
         run: java -version
       # Runs the Maven package target in non-interactive mode to ensure that your code builds, tests pass, and a package can be created.
       - name: Build with Maven
+        env:
+          GOOGLE_MAPS_PLACE_ID: any_place_id
+          GOOGLE_MAPS_API_KEY: any_api_key
         run: mvn --batch-mode --update-snapshots package
 
   push_to_registry:
